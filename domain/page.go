@@ -8,6 +8,16 @@ type Page[Entity any] struct {
 	TotalPages int
 }
 
+func EmptyPage[Entity any]() Page[Entity] {
+	return Page[Entity]{
+		Items:      []Entity{},
+		Total:      0,
+		PageSize:   0,
+		PageNumber: 0,
+		TotalPages: 0,
+	}
+}
+
 type IPageBuilder[Entity any] interface {
 	SetItems(items []Entity) IPageBuilder[Entity]
 	SetTotal(total int) IPageBuilder[Entity]

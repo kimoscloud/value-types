@@ -2,14 +2,11 @@ name: Test
 
 on:
   push:
-      branches: [ dev ]
-  pull_request:
-    branches: [ main, dev ]
+    branches: [ main ]
 
 jobs:
-
-  build:
-    name: Build
+  build-and-test:
+    name: Build and Test
     runs-on: ubuntu-latest
     steps:
 
@@ -35,3 +32,20 @@ jobs:
           flags: unittests
           name: codecov-umbrella
           fail_ci_if_error: true
+  create-tag:
+    name: Create Tag
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Create Tag
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git tag v$(date +'%Y%m%d%H%M%S')
+          git push origin --tags
+
+    env:
+      GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}

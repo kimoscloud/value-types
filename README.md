@@ -1,1 +1,1 @@
-s
+[![codecov](https://codecov.io/gh/kimoscloud/value-types/graph/badge.svg?token=SHLWE4EFTR)](https://codecov.io/gh/kimoscloud/value-types)

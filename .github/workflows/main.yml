@@ -44,7 +44,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git tag v$(date +'%Y%m%d%H%M%S')
+          git tag v0.0.2.1
           git push origin --tags
 
     env:

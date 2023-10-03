@@ -21,11 +21,11 @@ type NotFoundError struct {
 	*AppError
 }
 
-func NewNotFoundError(message, description string, code string) *NotFoundError {
+func NewNotFoundError(message, description string, code ErrorCode) *NotFoundError {
 	return &NotFoundError{
 		AppError: &AppError{
 			Message:     message,
-			Code:        code,
+			Code:        string(code),
 			Description: description,
 			HTTPStatus:  http.StatusNotFound,
 		},
@@ -36,11 +36,11 @@ type UnauthorizedError struct {
 	*AppError
 }
 
-func NewUnauthorizedError(message, description string, code string) *UnauthorizedError {
+func NewUnauthorizedError(message, description string, code ErrorCode) *UnauthorizedError {
 	return &UnauthorizedError{
 		AppError: &AppError{
 			Message:     message,
-			Code:        code,
+			Code:        string(code),
 			Description: description,
 			HTTPStatus:  http.StatusUnauthorized,
 		},
@@ -51,11 +51,11 @@ type BadRequestError struct {
 	*AppError
 }
 
-func NewBadRequestError(message, description string, code string) *BadRequestError {
+func NewBadRequestError(message, description string, code ErrorCode) *BadRequestError {
 	return &BadRequestError{
 		AppError: &AppError{
 			Message:     message,
-			Code:        code,
+			Code:        string(code),
 			Description: description,
 			HTTPStatus:  http.StatusBadRequest,
 		},

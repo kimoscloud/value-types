@@ -61,3 +61,18 @@ func NewBadRequestError(message, description string, code ErrorCode) *BadRequest
 		},
 	}
 }
+
+type InternalServerError struct {
+	*AppError
+}
+
+func NewInternalServerError(message, description string, code ErrorCode) *InternalServerError {
+	return &InternalServerError{
+		AppError: &AppError{
+			Message:     message,
+			Code:        string(code),
+			Description: description,
+			HTTPStatus:  http.StatusInternalServerError,
+		},
+	}
+}

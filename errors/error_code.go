@@ -7,4 +7,5 @@ const (
 	ErrorInvalidEmail                         ErrorCode = "0000002"
 	ErrorPasswordDoesntHaveTheRequestedFormat ErrorCode = "0000003"
 	ErrorPasswordDoesntMatch                  ErrorCode = "0000004"
+	ErrorCreatingUser                         ErrorCode = "0000005"
 )

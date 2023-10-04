@@ -8,4 +8,5 @@ const (
 	ErrorPasswordDoesntHaveTheRequestedFormat ErrorCode = "0000003"
 	ErrorPasswordDoesntMatch                  ErrorCode = "0000004"
 	ErrorCreatingUser                         ErrorCode = "0000005"
+	ErrorAuthenticatingUser                   ErrorCode = "0000006"
 )

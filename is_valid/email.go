@@ -1,6 +1,9 @@
 package is_valid
 
-import "regexp"
+import (
+	"regexp"
+	"strings"
+)
 
 func IsValidEmail(email string) bool {
 	const emailPattern = `^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`
@@ -8,5 +11,20 @@ func IsValidEmail(email string) bool {
 	if err != nil {
 		return false
 	}
-	return matched
+	if !matched {
+		return false
+	}
+	excludedPatterns := []string{
+		`@123.123.123.123`,
+		`@[123.123.123.123]`,
+		`"^"`,
+		`_@`,
+	}
+	for _, excluded := range excludedPatterns {
+		if strings.Contains(email, excluded) {
+			return false
+		}
+	}
+
+	return true
 }

@@ -1,4 +1,4 @@
-module github.com/nonils/value-types
+module github.com/kimoscloud/value-types
 
 go 1.21.0
 

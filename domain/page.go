@@ -61,11 +61,18 @@ func (builder *PageBuilder[Entity]) SetTotalPages(totalPages int) IPageBuilder[E
 }
 
 func (builder *PageBuilder[Entity]) Build() Page[Entity] {
+	totalPages := builder.totalPages
+	if totalPages == 0 {
+		totalPages = builder.total / builder.pageSize
+		if builder.total%builder.pageSize > 0 {
+			totalPages++
+		}
+	}
 	return Page[Entity]{
 		Items:      builder.items,
 		Total:      builder.total,
 		PageSize:   builder.pageSize,
 		PageNumber: builder.pageNumber,
-		TotalPages: builder.totalPages,
+		TotalPages: totalPages,
 	}
 }

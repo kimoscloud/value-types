@@ -16,7 +16,7 @@ func (e *AppError) Error() string {
 	return fmt.Sprintf("%s: %s", e.Code, e.Message)
 }
 
-// NotFoundError represents an error when a resource is not found.
+// NotFoundError represents an errors when a resource is not found.
 type NotFoundError struct {
 	*AppError
 }

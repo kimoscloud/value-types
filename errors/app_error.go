@@ -76,3 +76,33 @@ func NewInternalServerError(message, description string, code ErrorCode) *Intern
 		},
 	}
 }
+
+type ForbiddenError struct {
+	*AppError
+}
+
+func NewForbiddenError(message, description string, code ErrorCode) *ForbiddenError {
+	return &ForbiddenError{
+		AppError: &AppError{
+			Message:     message,
+			Code:        string(code),
+			Description: description,
+			HTTPStatus:  http.StatusForbidden,
+		},
+	}
+}
+
+type ConflictError struct {
+	*AppError
+}
+
+func NewConflictError(message, description string, code ErrorCode) *ConflictError {
+	return &ConflictError{
+		AppError: &AppError{
+			Message:     message,
+			Code:        string(code),
+			Description: description,
+			HTTPStatus:  http.StatusConflict,
+		},
+	}
+}
